@@ -16,6 +16,7 @@ var categoryinside = document.querySelector('#category-inside')
 var categorieslink = document.getElementById('Categorieslink')
 var categories = document.getElementById('categories')
 var Arealink = document.getElementById('Arealink')
+var searchByName = document.getElementById('searchByName')
 
 
 
@@ -404,7 +405,10 @@ export class searchbyletter {
                 console.log(item.getAttribute('data-letter'));
 
                 const firstletter = item.getAttribute('data-letter');
+                const id= item.getAttribute('id');
                 fetchMealsbyletter(firstletter);
+                getdetails(id);
+                searchpage.classList.add('d-none')
 
             });
         });
@@ -530,14 +534,23 @@ export class searchbyName {
         }
 
         this.rowElement10.innerHTML = box;
-
+        
         document.querySelectorAll('.meal-item').forEach((item) => {
             item.addEventListener('click', function () {
 
-                console.log(item.getAttribute('data-name'));
+                // console.log(item.getAttribute('data-name'));
 
                 const name = item.getAttribute('data-name');
+                const id= item.getAttribute('id');
+
                 fetchMealsbyname(name);
+                getdetails(id)
+                searchpage.classList.add('d-none')
+                searchByName.getElementById('searchByName').value = ''
+                
+               
+               
+       
 
             });
         });

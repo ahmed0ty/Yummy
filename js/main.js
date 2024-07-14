@@ -241,6 +241,7 @@ export async function fetchMealsbyname(name) {
 
 function hideMeals() {
     rowElement7.innerHTML = ''; 
+
 }
 function hideMeals2() {
     rowElement10.innerHTML = '';
@@ -251,6 +252,7 @@ document.getElementById('searchByFirstLetter').addEventListener('input', functio
 
     if (firstLetter) {
         fetchMealsbyletter(firstLetter);
+        
     } else {
         hideMeals();
     }
@@ -265,3 +267,5 @@ document.getElementById('searchByName').addEventListener('input', function() {
         hideMeals2();
     }
 });
+
+
