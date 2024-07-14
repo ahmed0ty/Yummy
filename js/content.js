@@ -538,7 +538,7 @@ export class searchbyName {
         document.querySelectorAll('.meal-item').forEach((item) => {
             item.addEventListener('click', function () {
 
-                // console.log(item.getAttribute('data-name'));
+                console.log(item.getAttribute('data-name'));
 
                 const name = item.getAttribute('data-name');
                 const id= item.getAttribute('id');
