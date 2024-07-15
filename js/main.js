@@ -263,7 +263,8 @@ document.getElementById('searchByName').addEventListener('input', function() {
 
     if (name) {
         fetchMealsbyname(name);
-    } else {
+    }
+     else {
         hideMeals2();
     }
 });

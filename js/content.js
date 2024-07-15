@@ -17,6 +17,7 @@ var categorieslink = document.getElementById('Categorieslink')
 var categories = document.getElementById('categories')
 var Arealink = document.getElementById('Arealink')
 var searchByName = document.getElementById('searchByName')
+var searchByFirstLetter = document.getElementById('searchByFirstLetter')
 
 
 
@@ -386,11 +387,9 @@ export class searchbyletter {
             <div class="meal-image position-relative">
                 <img src="${this.search[i].strMealThumb}" alt="">
                 <div class="layer">
-               <div class="mt-5">
-                <h3 class="position-absolute  start-50 py-5 translate-middle">${this.search[i].strMeal}</h3>
-                   
-               </div>
-                    
+                    <div class="mt-5">
+                        <h3 class="position-absolute  start-50 py-5 translate-middle">${this.search[i].strMeal}</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -399,23 +398,31 @@ export class searchbyletter {
 
         this.rowElement7.innerHTML = box;
 
+        const that = this;
+
         document.querySelectorAll('.meal-item').forEach((item) => {
             item.addEventListener('click', function () {
+                const firstLetter = this.getAttribute('data-letter');
+                const id = this.getAttribute('id');
 
-                console.log(item.getAttribute('data-letter'));
-
-                const firstletter = item.getAttribute('data-letter');
-                const id= item.getAttribute('id');
-                fetchMealsbyletter(firstletter);
                 getdetails(id);
-                searchpage.classList.add('d-none')
 
+    
+                document.querySelectorAll('.meal-item').forEach((item) => {
+                    item.style.display = 'none';
+                });
+                searchpage.classList.add('d-none');
+      
+                searchByFirstLetter.value = '';
+
+                that.rowElement7.innerHTML = `
+            
+                `;
             });
         });
-
-
     }
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export class ingredientdisplay {
@@ -522,11 +529,9 @@ export class searchbyName {
             <div class="meal-image position-relative">
                 <img src="${this.search[i].strMealThumb}" alt="">
                 <div class="layer">
-               <div class="mt-5">
-                <h3 class="position-absolute  start-50 py-5 translate-middle">${this.search[i].strMeal}</h3>
-                   
-               </div>
-                    
+                    <div class="mt-5">
+                        <h3 class="position-absolute  start-50 py-5 translate-middle">${this.search[i].strMeal}</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -535,26 +540,30 @@ export class searchbyName {
 
         this.rowElement10.innerHTML = box;
         
+        const that = this;
+
         document.querySelectorAll('.meal-item').forEach((item) => {
             item.addEventListener('click', function () {
+                const name = this.getAttribute('data-name');
+                const id = this.getAttribute('id');
 
-                console.log(item.getAttribute('data-name'));
+              
+                getdetails(id);
 
-                const name = item.getAttribute('data-name');
-                const id= item.getAttribute('id');
-
-                fetchMealsbyname(name);
-                getdetails(id)
-                searchpage.classList.add('d-none')
-                searchByName.getElementById('searchByName').value = ''
-                
-               
-               
        
+                document.querySelectorAll('.meal-item').forEach((item) => {
+                    item.style.display = 'none';
+                });
 
+
+                searchpage.classList.add('d-none');
+          
+                searchByName.value = '';
+
+                that.rowElement10.innerHTML = `
+                 
+                `;
             });
         });
-
-
     }
 }
